@@ -2,8 +2,29 @@
 
 pokemonApp.controller('PokemonDetailCtrl', function($scope, $routeParams, PokemonsService) {
 
-    PokemonsService.getPokemon($routeParams['pokemonId']).then(function(pokemonData) {
-        $scope.pokemon = pokemonData.data;
+    $scope.pokemonLoaded = false;
+
+    PokemonsService.getPokemon($routeParams['pokemonId']).then(function(response) {
+        $scope.pokemon = response.data;
+        $scope.pokemonLoaded = true;
     });
+
+    $scope.deletePokemon = function(pokemonId) {
+
+        $scope.deletionError = false;
+        $scope.deletionSuccess = false;
+
+        PokemonsService.deletePokemon(pokemonId).then(function successCallback(response) {
+
+            // Окей!
+            $scope.deletionSuccess = true;
+
+        }, function errorCallback(response) {
+
+            // Не окей..
+            $scope.deletionError = true;
+        });
+
+    }
 
 });

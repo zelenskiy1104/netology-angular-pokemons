@@ -1,41 +1,28 @@
-<div class="panel panel-default">
-    <div class="panel-body">
+<div class="row">
+    <div class="col-md-8">
 
-        Найти:
-        <input ng-model="myQuery"><br><br>
+        <div class="list-group">
+            <a href="#/pokemons/{{singlePokemon.name }}" class="list-group-item" ng-repeat="singlePokemon in pokemons">
 
-        Сортировать по:
-        <select ng-model="myOrderProperty">
-            <option value="id">ID</option>
-            <option value="weight">Весу</option>
-            <option value="height">Росту</option>
-        </select>
+                <h4>
+                    {{singlePokemon.name | uppercase }}
+                </h4>
+
+            </a>
+        </div>
 
     </div>
-</div>
+    <div class="col-md-4">
 
-<div class="list-group">
-    <a href="#/pokemons/{{singlePokemon.id }}" class="list-group-item" ng-repeat="singlePokemon in pokemons | filter:myQuery | orderBy:myOrderProperty">
-        <h4 class="list-group-item-heading">
-            <span class="badge">{{singlePokemon.id }}</span>
-            {{singlePokemon.name | uppercase }}
-        </h4>
-        <p class="list-group-item-text">
-            Вес:
-            {{singlePokemon.weight}}, рост:
-            {{singlePokemon.height}}
-        </p>
+        <div class="list-group">
+            <div class="list-group-item" ng-repeat="singleBerry in berries">
 
-    </a>
-</div>
+                <h4>
+                    {{singleBerry.name | uppercase }}
+                </h4>
 
-<div class="panel panel-default" ng-show="myQuery">
-    <div class="panel-body">
-
-        <p>
-            Выведены покемоны, содержащие
-            {{myQuery}}
-        </p>
+            </a>
+        </div>
 
     </div>
 </div>
