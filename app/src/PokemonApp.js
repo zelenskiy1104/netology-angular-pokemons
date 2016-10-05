@@ -1,15 +1,14 @@
-var pokemonApp = angular.module('PokemonApp', ['ngRoute', 'ngResource']);
+var pokemonApp = angular.module('PokemonApp', ['ngRoute', 'ngResource', 'restangular', 'ui.bootstrap', 'ngMaterial']);
 
 angular.
 module('PokemonApp')
 
-.config(['$routeProvider',
-    function config($routeProvider) {
+.config(['$routeProvider', 'RestangularProvider',
+    function config($routeProvider, RestangularProvider) {
 
         $routeProvider.
         when('/pokemons', {
-            templateUrl: 'src/PokemonList/PokemonList.html',
-            controller: 'PokemonListCtrl'
+            template: '<pokemon-list></pokemon-list>'
         }).
         when('/pokemons/:pokemonId', {
             templateUrl: 'src/PokemonDetail/PokemonDetail.html',
@@ -26,10 +25,14 @@ module('PokemonApp')
         otherwise({
             redirectTo: '/'
         });
+
+        RestangularProvider.setBaseUrl('https://api.backendless.com/v1/data/');
+
     }
 ])
 
 .config(['$httpProvider', function($httpProvider) {
+
     $httpProvider.defaults.headers.common = {
         "application-id": "4B730C92-F81E-236B-FFF0-6651FE882800",
         "secret-key": "CB6DE86C-6069-86C4-FF1C-9049D5AC9400"

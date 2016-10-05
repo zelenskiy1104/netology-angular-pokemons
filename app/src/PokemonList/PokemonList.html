@@ -1,9 +1,5 @@
 <div class="list-group">
-    <a href="#/pokemons/{{singlePokemon.objectId }}" class="list-group-item" ng-repeat="singlePokemon in pokemons">
 
-        <h4>
-            {{singlePokemon.name | uppercase }}
-        </h4>
+    <pokemon-list-item pokemon="singlePokemon" ng-repeat="singlePokemon in $ctrl.pokemons"></pokemon-list-item>
 
-    </a>
 </div>

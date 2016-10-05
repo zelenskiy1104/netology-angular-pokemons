@@ -10,10 +10,14 @@ pokemonApp.controller('PokemonDetailCtrl', function($scope, $routeParams, Pokemo
         // Окей!
         $scope.notfoundError = false;
         $scope.pokemonLoaded = true;
+
+        $scope.activeTab = 1;
     }, function(errorResult) {
         // Не окей..
         $scope.notfoundError = true;
         $scope.pokemonLoaded = true;
+
+        $scope.disableControlTab = true;
     });
 
     $scope.pokemon.$promise.then(function(result) {
