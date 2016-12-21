@@ -8,6 +8,7 @@ pokemonApp.controller('PokemonDetailCtrl', function($scope, $routeParams, Pokemo
         pokemonId: $routeParams['pokemonId']
     }, function(successResult) {
         // Окей!
+        console.log(successResult);
         $scope.notfoundError = false;
         $scope.pokemonLoaded = true;
     }, function(errorResult) {
