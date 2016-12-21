@@ -1,20 +1,28 @@
 'use strict';
 
-pokemonApp.controller('PokemonRealtimeCtrl', function($scope, MySocket, $routeParams) {
+pokemonApp.controller('PokemonRealtimeCtrl', function($scope, mySocket, $routeParams) {
 
-  $scope.username = $routeParams.userName;
+    $scope.username = $routeParams.userName;
+    $scope.messages = [];
 
-  $scope.MySocket = MySocket;
-
-  $scope.submit = function(new_message) {
-
-    console.log(new_message);
-    if (!new_message) { return; }
-    MySocket.send({
-      username: $scope.username,
-      message: new_message
+    mySocket.on('chatMessage', function(data) {
+        $scope.messages.push(data);
     });
-    $scope.new_message = '';
-  };
+
+    $scope.MySocket = mySocket;
+
+    $scope.submit = function(new_message) {
+
+        if (!new_message) {
+            return;
+        }
+
+        mySocket.emit('chatMessage', {
+            username: $scope.username,
+            content: new_message
+        });
+
+        $scope.new_message = '';
+    };
 
 });

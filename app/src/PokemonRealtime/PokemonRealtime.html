@@ -4,8 +4,8 @@
         <div class="panel panel-default">
             <div class="panel-body">
 
-                Connection:
-                {{ MySocket.status() }}
+                <a href="https://netology-socket-io.herokuapp.com/">Сервер</a><br />
+                <a href="https://github.com/webmaxru/chat-example/blob/master/index.js">Исходный код</a>
 
             </div>
         </div>
@@ -26,13 +26,11 @@
     <div class="col-md-8">
 
         <div class="list-group">
-            <div class="list-group-item" ng-repeat="message in MySocket.collection | orderBy:'-timeStamp' track by $index">
+            <div class="list-group-item" ng-repeat="message in messages track by $index">
                 <h4 class="list-group-item-heading">
                     {{ message.username | uppercase }}
                 </h4>
                 <p class="list-group-item-text">
-                    <small>{{ message.timeStamp | date:'medium' }}</small>
-                    <br>
                     {{ message.content }}
                 </p>
 
