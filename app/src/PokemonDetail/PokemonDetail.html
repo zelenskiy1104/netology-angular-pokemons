@@ -7,7 +7,7 @@
 
 <uib-tabset active="activeTab">
 
-    <uib-tab heading="Инфо">
+    <uib-tab heading="Инфо" disable="disableControlTab">
 
         <h1 class="media-heading">{{pokemon.name | uppercase }}</h1>
         <p>Вес:
@@ -16,13 +16,13 @@
 
     </uib-tab>
 
-    <uib-tab heading="Операции" disable="disableControlTab">
+    <uib-tab heading="Операции" >
 
         <button class="btn btn-danger" ng-click="deletePokemon(pokemon.objectId)">
             <span class="glyphicon glyphicon-trash"></span>
             Удалить
         </button>
-        <a class="btn btn-primary" href="#/edit/{{pokemon.objectId}}">
+        <a class="btn btn-primary" href="#!/edit/{{pokemon.objectId}}">
             Редактировать
         </a>
 
