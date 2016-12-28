@@ -19,6 +19,10 @@ angular
             templateUrl: 'src/CreatePokemon/CreatePokemon.html',
             controller: 'CreatePokemonCtrl'
         }).
+        when('/update/:pokemonId', {
+            templateUrl: 'src/UpdatePokemon/UpdatePokemon.html',
+            controller: 'UpdatePokemonCtrl'
+        }).
         when('/realtime/:userName', {
             templateUrl: 'src/PokemonRealtime/PokemonRealtime.html',
             controller: 'PokemonRealtimeCtrl'
@@ -28,6 +32,14 @@ angular
         });
     }
 ])
+
+.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.put = {
+        "application-id": "7ED99229-940D-416D-FF3D-9892B5366B00",
+        "secret-key": "A7588A27-397B-65B8-FF84-29AC9AB33200"
+    };
+
+}])
 
 .factory('mySocket', function(socketFactory) {
   var myIoSocket = io.connect('https://netology-socket-io.herokuapp.com/');

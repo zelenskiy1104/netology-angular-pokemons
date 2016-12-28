@@ -25,6 +25,14 @@ angular
                     });
                 },
 
+                updatePokemon: function(pokemonData) {
+                    return $http({
+                        method: 'PUT',
+                        url: 'https://api.backendless.com/v1/data/pokemon/'+pokemonId+'/update',
+                        data: pokemonData
+                    });
+                },
+
                 deletePokemon: function(pokemonId) {
                     return $http({
                         method: 'DELETE',
