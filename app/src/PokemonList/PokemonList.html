@@ -1,5 +1,15 @@
-<div class="list-group">
-
-    <pokemon-list-item pokemon="singlePokemon" ng-repeat="singlePokemon in $ctrl.pokemons"></pokemon-list-item>
-
-</div>
+<md-content class="md-padding" style="max-width: 400px;">
+    <md-card>
+        <img ng-src="./assets/img/card-bg.jpg" class="md-card-image" alt="Новый покемон">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Список покемонов</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <md-list>
+                <pokemon-list-item pokemon="singlePokemon" ng-repeat="singlePokemon in $ctrl.pokemons"></pokemon-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</md-content>
